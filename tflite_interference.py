@@ -7,8 +7,11 @@ LABELS = [
     "stain",
 ]
 
+model_path = "model.tflite"
+image_path = "image.jpg"
+
 # Load TFLite model and allocate tensors
-interpreter = tflite.Interpreter(model_path="model.tflite")
+interpreter = tflite.Interpreter(model_path=model_path)
 interpreter.allocate_tensors()
 
 # Get input and output details
@@ -58,7 +61,6 @@ def postprocess_output(output_data, image_shape):
 
 
 # Load image
-image_path = "image.jpg"
 image = cv2.imread(image_path)
 image_shape = image.shape[:2]  # (height, width)
 
